@@ -1,0 +1,14 @@
+# Don't store local connection file used for testing
+connection.properties
+
+# OS X noise
+.DS_Store
+
+**/*.db
+
+# Maven/Java
+target/
+.classpath
+.project
+.settings/
+~             
