@@ -2,7 +2,13 @@ package com.jasonwjones.hyperion;
 
 import com.beust.jcommander.Parameter;
 
-//@Parameters(separators = "=")
+/**
+ * Simple POJO for JCommander to model the basic options for the renegade setter
+ * program.
+ * 
+ * @author jasonwjones
+ *
+ */
 public class RenegadeCommand {
 
 	@Parameter(names = "--dimension", description = "Dimension to update", required = true)

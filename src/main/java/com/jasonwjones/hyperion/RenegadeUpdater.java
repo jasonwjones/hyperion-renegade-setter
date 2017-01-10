@@ -17,6 +17,12 @@ import com.saxifrages.essbase.QuickCubeOp.CubeOpDelegate;
 import com.saxifrages.essbase.TargetUtils;
 import com.saxifrages.essbase.primitives.CubeTarget;
 
+/**
+ * Main class for parsing arguments, then calling appropriate action.
+ * 
+ * @author jasonwjones
+ *
+ */
 public class RenegadeUpdater {
 
 	private static final Logger logger = LoggerFactory.getLogger(RenegadeUpdater.class);
@@ -40,7 +46,7 @@ public class RenegadeUpdater {
 
 		RenegadeUpdater updater = new RenegadeUpdater();
 		updater.renegadeReport(cubeTarget);
-		
+
 		if (command.isUnset()) {
 			logger.info("Attempting to remove renegade member");
 
@@ -55,7 +61,7 @@ public class RenegadeUpdater {
 		}
 
 		updater.renegadeReport(cubeTarget);
-		
+
 	}
 
 	public RenegadeUpdater() {
@@ -106,7 +112,7 @@ public class RenegadeUpdater {
 				IEssCubeOutline outline = cube.openOutline(new EssOutlineEditOption());
 				IEssDimension dimension = outline.findDimension(dimensionName);
 				IEssMember existingRenegade = dimension.getRenegadeMember();
-				
+
 				if (null == existingRenegade) {
 					logger.info("No existing renegade member on dimension {}", dimensionName);
 					outline.close();
@@ -130,12 +136,13 @@ public class RenegadeUpdater {
 				IEssIterator dimIter = outline.getDimensions();
 				for (int dimIndex = 0; dimIndex < dimIter.getCount(); dimIndex++) {
 					IEssDimension dim = (IEssDimension) dimIter.getAt(dimIndex);
-					logger.info("{}", String.format("%-24s : %-24s", dim.getName(), dim.getRenegadeMember() != null ? dim.getRenegadeMember() : "<none>"));
+					logger.info("{}", String.format("%-24s : %-24s", dim.getName(),
+							dim.getRenegadeMember() != null ? dim.getRenegadeMember() : "<none>"));
 				}
 				outline.close();
 				return true;
 			}
 		});
 	}
-	
+
 }
